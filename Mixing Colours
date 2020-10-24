@@ -1,0 +1,71 @@
+int r = 9;
+int b = 11;
+int g = 10;
+String msg = "Which colour LED do you wanna glow ?";
+String colour;
+
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(r, OUTPUT);
+pinMode(b, OUTPUT);
+pinMode(g, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+Serial.println(msg);
+while(Serial.available() == 0)
+{
+  
+}
+colour = Serial.readString();
+if(colour == "red")
+{
+  digitalWrite(r, HIGH);
+  digitalWrite(b, LOW);
+  digitalWrite(g, LOW);
+}
+if(colour == "blue")
+{
+  digitalWrite(b, HIGH);
+  digitalWrite(r, LOW);
+  digitalWrite(g, LOW);
+}
+if(colour == "green")
+{
+  digitalWrite(g, HIGH);
+  digitalWrite(b, LOW);
+  digitalWrite(r, LOW);
+}
+if(colour == "off")
+{
+  digitalWrite(g, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(r, LOW);
+}
+if(colour == "yellow")
+{
+  analogWrite(g, 255);
+  analogWrite(b, 0);
+  analogWrite(r, 255);
+}
+if(colour == "cyan")
+{
+  analogWrite(g, 255);
+  analogWrite(b, 255);
+  analogWrite(r, 0);
+}
+if(colour == "purple")
+{
+  analogWrite(g, 0);
+  analogWrite(b, 100);
+  analogWrite(r, 255);
+}
+if(colour == "white")
+{
+  analogWrite(g, 255);
+  analogWrite(b, 255);
+  analogWrite(r, 255);
+}
+}
